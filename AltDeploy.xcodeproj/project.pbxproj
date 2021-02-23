@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CC083BAB25E4C1D80091ADD4 /* ccsrp.m in Sources */ = {isa = PBXBuildFile; fileRef = CC083BAA25E4C1D80091ADD4 /* ccsrp.m */; };
 		CE1A4B1223CB41AA00489EAD /* libiconv.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = CE1A4B1123CB41AA00489EAD /* libiconv.tbd */; };
 		CE5F0E3B23C3894300445F16 /* AltPlugin.mailbundle in Resources */ = {isa = PBXBuildFile; fileRef = CE5F0E3A23C3894300445F16 /* AltPlugin.mailbundle */; };
 		CE64527723C8D1A200BA4593 /* ALTPreferencesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE64527623C8D1A200BA4593 /* ALTPreferencesViewController.m */; };
@@ -67,6 +68,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		CC083BAA25E4C1D80091ADD4 /* ccsrp.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ccsrp.m; sourceTree = "<group>"; };
 		CE1A4B1123CB41AA00489EAD /* libiconv.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libiconv.tbd; path = usr/lib/libiconv.tbd; sourceTree = SDKROOT; };
 		CE5F0E3A23C3894300445F16 /* AltPlugin.mailbundle */ = {isa = PBXFileReference; lastKnownFileType = folder; path = AltPlugin.mailbundle; sourceTree = "<group>"; };
 		CE64527523C8D1A200BA4593 /* ALTPreferencesViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ALTPreferencesViewController.h; sourceTree = "<group>"; };
@@ -425,6 +427,7 @@
 				CEA24BDD23C12A3100A6DB11 /* ccdigest.h */,
 				CEA24BDE23C12A3100A6DB11 /* ccder.h */,
 				CEA24BDF23C12A3100A6DB11 /* ccrng.h */,
+				CC083BAA25E4C1D80091ADD4 /* ccsrp.m */,
 			);
 			path = corecrypto;
 			sourceTree = "<group>";
@@ -570,6 +573,7 @@
 				CEA24B6D23C1234100A6DB11 /* ALTApplication.mm in Sources */,
 				CEA24BEB23C130CD00A6DB11 /* ALTDeviceManager.mm in Sources */,
 				CEA24B6023C1234100A6DB11 /* ALTAppleAPISession.m in Sources */,
+				CC083BAB25E4C1D80091ADD4 /* ccsrp.m in Sources */,
 				D69D3D6823C6ADF00095CEC9 /* ALTAddAppleIDViewController.m in Sources */,
 				CEA24B6823C1234100A6DB11 /* ALTCertificateRequest.m in Sources */,
 				CEA24B6223C1234100A6DB11 /* ALTCapabilities.m in Sources */,
@@ -717,7 +721,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = 9UQFRSGV3G;
+				DEVELOPMENT_TEAM = GXZ23M5TP2;
 				ENABLE_HARDENED_RUNTIME = YES;
 				GCC_PREPROCESSOR_DEFINITIONS = "DEBUG=1";
 				HEADER_SEARCH_PATHS = (
@@ -736,7 +740,10 @@
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				MARKETING_VERSION = 1.1.1;
-				OTHER_CFLAGS = "-Dunix=1";
+				OTHER_CFLAGS = (
+					"-Dunix=1",
+					"-DCORECRYPTO_DONOT_USE_TRANSPARENT_UNION",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.pixelomer.altdeploy;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "AltDeploy-Bridge.h";
@@ -752,7 +759,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = 9UQFRSGV3G;
+				DEVELOPMENT_TEAM = GXZ23M5TP2;
 				ENABLE_HARDENED_RUNTIME = YES;
 				HEADER_SEARCH_PATHS = (
 					/usr/local/include,
@@ -770,7 +777,10 @@
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				MARKETING_VERSION = 1.1.1;
-				OTHER_CFLAGS = "-Dunix=1";
+				OTHER_CFLAGS = (
+					"-Dunix=1",
+					"-DCORECRYPTO_DONOT_USE_TRANSPARENT_UNION",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.pixelomer.altdeploy;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "AltDeploy-Bridge.h";
