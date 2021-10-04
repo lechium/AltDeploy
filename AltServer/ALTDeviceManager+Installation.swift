@@ -121,7 +121,7 @@ extension ALTDeviceManager
 																		progress.completedUnitCount += 1
 																		progress.localizedDescription = "Fetching the provisioning profile...";
                                                                         
-                                                                        self.fetchProvisioningProfile(for: appID, team: team, session: session) { (result) in
+                                                                        self.fetchProvisioningProfile(for: appID, platform:application.platform, team: team, session: session) { (result) in
                                                                             do
                                                                             {
                                                                                 let provisioningProfile = try result.get()
@@ -487,6 +487,13 @@ To prevent this from happening, feel free to try again with another Apple ID to 
             {
                 completionHandler(.failure(error))
             }
+        }
+    }
+    
+    
+    func fetchProvisioningProfile(for appID: ALTAppID, platform: String, team: ALTTeam, session: ALTAppleAPISession, completionHandler: @escaping(Result<ALTProvisioningProfile, Error>) -> Void) {
+        ALTAppleAPI.shared.fetchProvisioningProfile(for: appID, platform: platform, team: team, session: session) { (profile, error) in
+            completionHandler(Result(profile, error))
         }
     }
     

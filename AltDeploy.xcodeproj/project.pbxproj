@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		329AD9D0270A9687009D6237 /* libimobiledevice-glue-1.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 329AD9CF270A9687009D6237 /* libimobiledevice-glue-1.0.a */; };
 		CC083BAB25E4C1D80091ADD4 /* ccsrp.m in Sources */ = {isa = PBXBuildFile; fileRef = CC083BAA25E4C1D80091ADD4 /* ccsrp.m */; };
 		CE1A4B1223CB41AA00489EAD /* libiconv.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = CE1A4B1123CB41AA00489EAD /* libiconv.tbd */; };
 		CE5F0E3B23C3894300445F16 /* AltPlugin.mailbundle in Resources */ = {isa = PBXBuildFile; fileRef = CE5F0E3A23C3894300445F16 /* AltPlugin.mailbundle */; };
@@ -68,6 +69,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		329AD9CF270A9687009D6237 /* libimobiledevice-glue-1.0.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libimobiledevice-glue-1.0.a"; path = "Dependencies/libimobiledevice-glue-1.0.a"; sourceTree = "<group>"; };
 		CC083BAA25E4C1D80091ADD4 /* ccsrp.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ccsrp.m; sourceTree = "<group>"; };
 		CE1A4B1123CB41AA00489EAD /* libiconv.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libiconv.tbd; path = usr/lib/libiconv.tbd; sourceTree = SDKROOT; };
 		CE5F0E3A23C3894300445F16 /* AltPlugin.mailbundle */ = {isa = PBXFileReference; lastKnownFileType = folder; path = AltPlugin.mailbundle; sourceTree = "<group>"; };
@@ -235,6 +237,7 @@
 			files = (
 				CE1A4B1223CB41AA00489EAD /* libiconv.tbd in Frameworks */,
 				CE77231123C76FE30000C344 /* libssl.a in Frameworks */,
+				329AD9D0270A9687009D6237 /* libimobiledevice-glue-1.0.a in Frameworks */,
 				CE77230B23C76FDC0000C344 /* libcrypto.a in Frameworks */,
 				CE77231323C76FE50000C344 /* libusbmuxd.a in Frameworks */,
 				CE77230D23C76FDE0000C344 /* libimobiledevice.a in Frameworks */,
@@ -273,6 +276,7 @@
 		CEA24AB023C10FCD00A6DB11 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				329AD9CF270A9687009D6237 /* libimobiledevice-glue-1.0.a */,
 				CE1A4B1123CB41AA00489EAD /* libiconv.tbd */,
 				CE77230A23C76FDC0000C344 /* libcrypto.a */,
 				CE77231023C76FE30000C344 /* libssl.a */,
@@ -717,11 +721,12 @@
 		CEA24AAE23C10F8A00A6DB11 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = x86_64;
 				CODE_SIGN_ENTITLEMENTS = AltDeploy/AltDeploy.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = GXZ23M5TP2;
+				DEVELOPMENT_TEAM = 9EUFEA5U7G;
 				ENABLE_HARDENED_RUNTIME = YES;
 				GCC_PREPROCESSOR_DEFINITIONS = "DEBUG=1";
 				HEADER_SEARCH_PATHS = (
@@ -755,11 +760,12 @@
 		CEA24AAF23C10F8A00A6DB11 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = x86_64;
 				CODE_SIGN_ENTITLEMENTS = AltDeploy/AltDeploy.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = GXZ23M5TP2;
+				DEVELOPMENT_TEAM = 9EUFEA5U7G;
 				ENABLE_HARDENED_RUNTIME = YES;
 				HEADER_SEARCH_PATHS = (
 					/usr/local/include,

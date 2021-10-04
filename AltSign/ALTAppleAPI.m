@@ -572,12 +572,15 @@ NS_ASSUME_NONNULL_END
 }
 
 #pragma mark - Provisioning Profiles -
-
-- (void)fetchProvisioningProfileForAppID:(ALTAppID *)appID team:(ALTTeam *)team session:(ALTAppleAPISession *)session completionHandler:(void (^)(ALTProvisioningProfile * _Nullable, NSError * _Nullable))completionHandler
+- (void)fetchProvisioningProfileForAppID:(ALTAppID *)appID platform:(NSString *)platform team:(ALTTeam *)team session:(ALTAppleAPISession *)session completionHandler:(void (^)(ALTProvisioningProfile * _Nullable, NSError * _Nullable))completionHandler
 {
+    NSLog(@"platform: %@", platform);
+    NSDictionary *additionalParams = @{@"appIdId": appID.identifier };
+    if ([platform isEqualToString:@"appletvos"]){
+        additionalParams = @{@"appIdId": appID.identifier,@"DTDK_Platform": @"tvos",@"subPlatform":@"tvOS" };
+    }
     NSURL *URL = [NSURL URLWithString:@"ios/downloadTeamProvisioningProfile.action" relativeToURL:self.baseURL];
-    
-    [self sendRequestWithURL:URL additionalParameters:@{@"appIdId": appID.identifier} session:session team:team completionHandler:^(NSDictionary *responseDictionary, NSError *requestError) {
+    [self sendRequestWithURL:URL additionalParameters:additionalParams session:session team:team completionHandler:^(NSDictionary *responseDictionary, NSError *requestError) {
         if (responseDictionary == nil)
         {
             completionHandler(nil, requestError);
@@ -606,6 +609,11 @@ NS_ASSUME_NONNULL_END
         
         completionHandler(provisioningProfile, error);
     }];
+}
+
+- (void)fetchProvisioningProfileForAppID:(ALTAppID *)appID team:(ALTTeam *)team session:(ALTAppleAPISession *)session completionHandler:(void (^)(ALTProvisioningProfile * _Nullable, NSError * _Nullable))completionHandler
+{
+    [self fetchProvisioningProfileForAppID:appID platform:@"ios" team:team session:session completionHandler:completionHandler];
 }
 
 - (void)deleteProvisioningProfile:(ALTProvisioningProfile *)provisioningProfile forTeam:(ALTTeam *)team session:(ALTAppleAPISession *)session completionHandler:(void (^)(BOOL, NSError * _Nullable))completionHandler

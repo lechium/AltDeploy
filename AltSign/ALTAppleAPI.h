@@ -75,6 +75,9 @@ NS_SWIFT_NAME(revoke(_:for:session:completionHandler:));
 completionHandler:(void (^)(BOOL success, NSError *_Nullable error))completionHandler;
 
 /* Provisioning Profiles */
+
+- (void)fetchProvisioningProfileForAppID:(ALTAppID *)appID platform:(NSString *)platform team:(ALTTeam *)team session:(ALTAppleAPISession *)session completionHandler:(void (^)(ALTProvisioningProfile * _Nullable, NSError * _Nullable))completionHandler;
+
 - (void)fetchProvisioningProfileForAppID:(ALTAppID *)appID team:(ALTTeam *)team session:(ALTAppleAPISession *)session
                        completionHandler:(void (^)(ALTProvisioningProfile *_Nullable provisioningProfile, NSError *_Nullable error))completionHandler;
 

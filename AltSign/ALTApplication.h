@@ -23,6 +23,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, copy, readonly) NSString *name;
 @property (nonatomic, copy, readonly) NSString *bundleIdentifier;
 @property (nonatomic, copy, readonly) NSString *version;
+@property (nonatomic, copy, readonly) NSString *platform;
 
 #if TARGET_OS_IPHONE
 @property (nonatomic, readonly) UIImage *icon;

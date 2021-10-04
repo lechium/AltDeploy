@@ -49,6 +49,7 @@
             return nil;
         }
         
+        NSString *platform = infoDictionary[@"DTPlatformName"] ?: @"ios";
         NSString *version = infoDictionary[@"CFBundleShortVersionString"] ?: @"1.0";
         NSString *minimumVersionString = infoDictionary[@"MinimumOSVersion"] ?: @"1.0";
         
@@ -64,26 +65,27 @@
         minimumVersion.patchVersion = patchVersion;
         
         NSDictionary *icons = infoDictionary[@"CFBundleIcons"];
-        NSDictionary *primaryIcon = icons[@"CFBundlePrimaryIcon"];
-        
-        NSArray *iconFiles = primaryIcon[@"CFBundleIconFiles"];
-        if (iconFiles == nil)
-        {
-            iconFiles = infoDictionary[@"CFBundleIconFiles"];
+        id primaryIcon = icons[@"CFBundlePrimaryIcon"];
+        NSString *iconName = nil;
+        if ([primaryIcon respondsToSelector:@selector(allKeys)]){
+            NSArray *iconFiles = primaryIcon[@"CFBundleIconFiles"];
+            if (iconFiles == nil) {
+                iconFiles = infoDictionary[@"CFBundleIconFiles"];
+            }
+            iconName = [iconFiles lastObject];
+            if (iconName == nil) {
+                iconName = infoDictionary[@"CFBundleIconFile"];
+            }
+        } else {
+            iconName = primaryIcon;
         }
-        
-        NSString *iconName = [iconFiles lastObject];
-        if (iconName == nil)
-        {
-            iconName = infoDictionary[@"CFBundleIconFile"];
-        }
-        
         _fileURL = [fileURL copy];
         _name = [name copy];
         _bundleIdentifier = [bundleIdentifier copy];
         _version = [version copy];
         _minimumiOSVersion = minimumVersion;
         _iconName = [iconName copy];
+        _platform = [platform copy];
     }
     
     return self;
