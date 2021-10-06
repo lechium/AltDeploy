@@ -355,7 +355,7 @@ To prevent this from happening, feel free to try again with another Apple ID to 
             do
             {
                 let certificates = try Result(certificates, error).get()
-                
+                print("certs: \(certificates)")
                 if let certificate = certificates.first
                 {
                     ALTAppleAPI.shared.revoke(certificate, for: team, session: session) { (success, error) in

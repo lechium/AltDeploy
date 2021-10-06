@@ -44,6 +44,29 @@ NSString *ALTCertificatePEMSuffix = @"-----END CERTIFICATE-----";
     {
         NSString *encodedData = attributesDictionary[@"certificateContent"];
         data = [[NSData alloc] initWithBase64EncodedString:encodedData options:0];
+        X509 *certForHashCheck;
+        const unsigned char *input = (unsigned char *)[data bytes];
+        certForHashCheck = d2i_X509(NULL, &input, (int)[data length]);
+        if (!certForHashCheck) {
+            self.intermediateCertName = [[NSBundle mainBundle] pathForResource:@"apple" ofType:@"pem"];
+        } else {
+            NSLog(@"bro h4x....");
+            unsigned long issuerHash = X509_issuer_name_hash(certForHashCheck);
+
+            if (issuerHash == 0x817d2f7a) {
+                self.intermediateCertName = [[NSBundle mainBundle] pathForResource:@"apple" ofType:@"pem"];
+            } else if (issuerHash == 0x9b16b75c) {
+                self.intermediateCertName = [[NSBundle mainBundle] pathForResource:@"apple-g3" ofType:@"pem"];
+            } else {
+                NSLog(@"Failed to determine intermediate certificate to use.");
+                self.intermediateCertName = [[NSBundle mainBundle] pathForResource:@"apple" ofType:@"pem"];
+                //@throw [NSException exceptionWithName:@"libProvisionSigningException" reason:@"Could not determine intermediate certificate to use!" userInfo:nil];
+            }
+
+            X509_free(certForHashCheck);
+            NSLog(@"using intermediate cert: %@", self.intermediateCertName);
+            //exit(0);
+        }
     }
     
     NSString *machineName = attributesDictionary[@"machineName"];

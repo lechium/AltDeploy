@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3276A81F270D830E00A14808 /* apple-g3.pem in Resources */ = {isa = PBXBuildFile; fileRef = 3276A81E270D830E00A14808 /* apple-g3.pem */; };
 		329AD9D0270A9687009D6237 /* libimobiledevice-glue-1.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 329AD9CF270A9687009D6237 /* libimobiledevice-glue-1.0.a */; };
 		CC083BAB25E4C1D80091ADD4 /* ccsrp.m in Sources */ = {isa = PBXBuildFile; fileRef = CC083BAA25E4C1D80091ADD4 /* ccsrp.m */; };
 		CE1A4B1223CB41AA00489EAD /* libiconv.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = CE1A4B1123CB41AA00489EAD /* libiconv.tbd */; };
@@ -69,6 +70,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		3276A81E270D830E00A14808 /* apple-g3.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "apple-g3.pem"; sourceTree = "<group>"; };
 		329AD9CF270A9687009D6237 /* libimobiledevice-glue-1.0.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libimobiledevice-glue-1.0.a"; path = "Dependencies/libimobiledevice-glue-1.0.a"; sourceTree = "<group>"; };
 		CC083BAA25E4C1D80091ADD4 /* ccsrp.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ccsrp.m; sourceTree = "<group>"; };
 		CE1A4B1123CB41AA00489EAD /* libiconv.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libiconv.tbd; path = usr/lib/libiconv.tbd; sourceTree = SDKROOT; };
@@ -467,6 +469,7 @@
 				CEA6377B23C3941200CEC7A9 /* AltDeploy.entitlements */,
 				CEA6377D23C3941200CEC7A9 /* Info.plist */,
 				CEA6377F23C3941200CEC7A9 /* apple.pem */,
+				3276A81E270D830E00A14808 /* apple-g3.pem */,
 				CE64527523C8D1A200BA4593 /* ALTPreferencesViewController.h */,
 				CE64527623C8D1A200BA4593 /* ALTPreferencesViewController.m */,
 			);
@@ -547,6 +550,7 @@
 				CEA6378223C3941200CEC7A9 /* Main.storyboard in Resources */,
 				CEA6378023C3941200CEC7A9 /* Assets.xcassets in Resources */,
 				CEA6378623C3941200CEC7A9 /* apple.pem in Resources */,
+				3276A81F270D830E00A14808 /* apple-g3.pem in Resources */,
 				CE5F0E3B23C3894300445F16 /* AltPlugin.mailbundle in Resources */,
 				CE72335323C8BD0F0019006B /* AppIcon.icns in Resources */,
 			);
@@ -744,7 +748,7 @@
 					"$(PROJECT_DIR)/Dependencies",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
-				MARKETING_VERSION = 1.1.2;
+				MARKETING_VERSION = 1.1.3;
 				OTHER_CFLAGS = (
 					"-Dunix=1",
 					"-DCORECRYPTO_DONOT_USE_TRANSPARENT_UNION",
@@ -782,7 +786,7 @@
 					"$(PROJECT_DIR)/Dependencies",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
-				MARKETING_VERSION = 1.1.2;
+				MARKETING_VERSION = 1.1.3;
 				OTHER_CFLAGS = (
 					"-Dunix=1",
 					"-DCORECRYPTO_DONOT_USE_TRANSPARENT_UNION",

@@ -270,7 +270,7 @@ NS_ASSUME_NONNULL_END
 - (void)revokeCertificate:(ALTCertificate *)certificate forTeam:(ALTTeam *)team session:(ALTAppleAPISession *)session completionHandler:(void (^)(BOOL, NSError * _Nullable))completionHandler
 {
     NSURL *URL = [NSURL URLWithString:[NSString stringWithFormat:@"certificates/%@", certificate.identifier] relativeToURL:self.servicesBaseURL];
-    
+    NSLog(@"revoking cert: %@", certificate);
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:URL];
     request.HTTPMethod = @"DELETE";
     
@@ -679,7 +679,7 @@ NS_ASSUME_NONNULL_END
     }
     
     NSURL *URL = [NSURL URLWithString:[NSString stringWithFormat:@"%@?clientId=%@", requestURL.absoluteString, ALTClientID]];
-    
+    NSLog(@"sendRequestWithURL: %@ params: %@", URL, parameters);
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:URL];
     request.HTTPMethod = @"POST";
     request.HTTPBody = bodyData;
@@ -725,7 +725,7 @@ NS_ASSUME_NONNULL_END
             completionHandler(nil, error);
             return;
         }
-        
+        NSLog(@"response: %@", responseDictionary);
         completionHandler(responseDictionary, nil);
     }];
     
@@ -745,7 +745,7 @@ NS_ASSUME_NONNULL_END
     components.queryItems = queryItems;
     
     NSString *queryString = components.query ?: @"";
-    
+    NSLog(@"sendServicesRequest: %@, query: %@", request.URL, queryString);
     NSError *serializationError = nil;
     NSData *bodyData = [NSJSONSerialization dataWithJSONObject:@{@"urlEncodedQueryParams": queryString} options:0 error:&serializationError];
     if (bodyData == nil)
@@ -810,7 +810,7 @@ NS_ASSUME_NONNULL_END
                 return;
             }
         }        
-        
+        NSLog(@"responseDictionary: %@", responseDictionary);
         completionHandler(responseDictionary, nil);
     }];
     

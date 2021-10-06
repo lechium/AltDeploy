@@ -25,8 +25,8 @@
 
 std::string CertificatesContent(ALTCertificate *altCertificate)
 {
-    NSURL *pemURL = [NSBundle.mainBundle URLForResource:@"apple" withExtension:@"pem"];
-    NSLog(@"pem: %@", pemURL);
+    NSLog(@"Loading CA chain from '%@'", altCertificate.intermediateCertName);
+    NSURL *pemURL = [NSURL fileURLWithPath:altCertificate.intermediateCertName];
     
     NSData *altCertificateP12Data = [altCertificate p12Data];
     
